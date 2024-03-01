@@ -35,7 +35,7 @@ public:
     void deleteUser(string username); // removes a user
     void readFromFile(string filename); // read and populate list void writeToFile(string filename);
     void display(string username);
-    UserInfo* getList();
+    UserInfo* getList(); // Added getter
 private:
     UserInfo* mylist; // Pointer to first element in linked list
 }; // end UserInfoManager
