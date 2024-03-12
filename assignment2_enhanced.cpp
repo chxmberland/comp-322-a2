@@ -709,15 +709,16 @@ void HealthAssistant::deleteUser(string username) {
 
 void HealthAssistant::massLoadAndCompute(string filename) {
     
-    // Reading in all of the users
+    // Reading in all of the users using the regular read from file function
     readFromFile(filename);
 
-    // Looping through each user
+    // Looping through each user, assuming previous function appended to singleton list
     UserInfo* ptr = UserListSingleton::getInstance().getListInstance();
     while (ptr != nullptr) {
 
         // Computes statistics based on NAME ALONE
         // If there are duplicates, only the first one is calculated
+        // Impossible to diffrentiate without overloading these functions
         getBfp(ptr->name);
         getDailyCalories(ptr->name);
         getMealPrep(ptr->name);
