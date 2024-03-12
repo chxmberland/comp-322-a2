@@ -731,61 +731,26 @@ void HealthAssistant::massLoadAndCompute(string filename) {
 
 int main() {
     HealthAssistant ha;
-
+    // get user details from console input for 1st user
     ha.getUserDetail();
-
-    cout << "Displaying all users" << endl;
+    // get user details from console input for 2nd user
+    ha.getUserDetail();
+    // display information for john (assuming that john is the name of the first user)
+    ha.display("john");
+    // display information for all the users
     ha.display("all");
-
-    // Computing bodyfat
-    cout << "Computing" << endl;
+    // get bfp for the 1st user
     ha.getBfp("john");
     ha.getDailyCalories("john");
     ha.getMealPrep("john");
-
-    cout << "Displaying all again" << endl;
-    ha.display("all");
-
-    // // Get user details from console input for 1st user 
-    // ha.getUserDetail();
-
-    // // Get user details from console input for 2nd user 
-    // ha.getUserDetail();
-
-    // // Display information for john (assuming that john is the name of the first user)
-    // cout << "Displaying John only.\n" << endl;
-    // ha.display("john");
-
-    // // Display information for all the users
-    // cout << "Displaying all.\n" << endl;
-    // ha.display("all");
-
-    // // Get bfp for the 1st user
-    // cout << "Calculating metrics for John.\n" << endl;
-    // ha.getBfp("john");
-    // ha.getDailyCalories("john");
-    // ha.getMealPrep("john");
-
-    // // Write all the data for all the users to file 
-    // cout << "Serializing data from HA." << endl;
-    // ha.serialize("user_data.csv");
-
-    // // Now let's get the data from file using a new instance of HealthAssistant
-    // HealthAssistant ha2;
-    // cout << "Reading from file into HA2.\n" << endl;
-    // ha2.readFromFile("user_data.csv");
-
-    // // Deleting Jack
-    // cout << "Displaying all in HA2.\n" << endl;
-    // ha2.display("all");
-
-    // cout << "Deleting Jack in HA2\n" << endl;
-    // ha2.deleteUser("jack"); // Assuming 2nd user is jack
-
-    // cout << "Displaying all in HA2 (confirming deletion).\n" << endl;
-    // ha2.display("all"); // Should only display for john at this point
-
-    // // // Now use the first object to display all
-    // cout << "Displaying all (FIRST OBJECT AGAIN)\n" << endl;
-    // ha.display("all"); // Both john and jack should be present
- } // end main
+    // write all the data for all the users to file
+    ha.serialize("user_data.csv");
+    // Now let's get the data from file using a new instance of HealthAssistant
+    HealthAssistant ha2;
+    ha2.readFromFile("user_data.csv");
+    ha2.display("all");
+    ha2.deleteUser("jack"); // assuming 2nd user is jack
+    ha2.display("all"); // should only display for john at this point
+    // now use the first object to display all
+    ha.display("all"); // Only john should be present
+} // end main

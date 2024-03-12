@@ -160,10 +160,8 @@ UserInfoManager::UserInfoManager() {
     mylist = NULL;
 }
 
-// TODO: Implement
 UserInfoManager::~UserInfoManager() {}
 
-// TODO: Implement
 void UserInfoManager::deleteUser(string username) {
     UserInfo** head = &mylist;
 
@@ -234,7 +232,6 @@ void UserInfoManager::deleteUser(string username) {
     }
 }
 
-// TODO: Implement
 void UserInfoManager::readFromFile(string filename) {
 
     // Opening the file in reading mode
@@ -706,47 +703,26 @@ void HealthAssistant::deleteUser(string username) {
 
 int main() {
     HealthAssistant ha;
-
-    // Get user details from console input for 1st user 
+    // get user details from console input for 1st user
     ha.getUserDetail();
-
-    // Get user details from console input for 2nd user 
+    // get user details from console input for 2nd user
     ha.getUserDetail();
-
-    // Display information for john (assuming that john is the name of the first user)
-    cout << "Displaying John only.\n" << endl;
+    // display information for john (assuming that john is the name of the first user)
     ha.display("john");
-
-    // Display information for all the users
-    cout << "Displaying all.\n" << endl;
+    // display information for all the users
     ha.display("all");
-
-    // Get bfp for the 1st user
-    cout << "Calculating metrics for John.\n" << endl;
+    // get bfp for the 1st user
     ha.getBfp("john");
     ha.getDailyCalories("john");
     ha.getMealPrep("john");
-
-    // Write all the data for all the users to file 
-    cout << "Serializing data." << endl;
+    // write all the data for all the users to file
     ha.serialize("user_data.csv");
-
     // Now let's get the data from file using a new instance of HealthAssistant
     HealthAssistant ha2;
-    cout << "Reading from file.\n" << endl;
     ha2.readFromFile("user_data.csv");
-
-    // Deleting Jack
-    cout << "Displaying all.\n" << endl;
     ha2.display("all");
-
-    cout << "Deleting Jack...\n" << endl;
-    ha2.deleteUser("jack"); // Assuming 2nd user is jack
-
-    cout << "Displaying all.\n" << endl;
-    ha2.display("all"); // Should only display for john at this point
-
-    // // Now use the first object to display all
-    cout << "Displaying all (FIRST OBJECT AGAIN)\n" << endl;
-    ha.display("all"); // Both john and jack should be present
- } // end main
+    ha2.deleteUser("jack"); // assuming 2nd user is jack
+    ha2.display("all"); // should only display for john at this point
+    // now use the first object to display all
+    ha.display("all"); // both john and jack should be present
+} // end main
